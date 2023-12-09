@@ -33,8 +33,7 @@ class FirstPage extends StatelessWidget {
               children: [
                 // Logo
                 Image.asset(
-                  "C:/Users/Baha/Desktop/flutter projects/proj1/assets/405300036_1296381447744390_1482679707331758722_n.png",
-                  width: 100.0,
+                  "assets/405300036_1296381447744390_1482679707331758722_n.png",
                   height: 100.0,
                 ),
                 SizedBox(height: 20.0),
