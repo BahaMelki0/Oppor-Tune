@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'CV_generator.dart';
 
 class FirstPage extends StatelessWidget {
   @override
@@ -31,12 +32,23 @@ class FirstPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  margin: EdgeInsets.only(left: 50.0, right: 25.0),
-                  child: Image.asset(
-                    "assets/Asset1.png",
-                    height: 250.0,
-                    width: 250.0,
+                // Animated logo
+                InkWell(
+                  onTap: () {
+                    // Add your desired animation when clicking the logo
+                    // For example, you can use a custom animation or navigate to a specific page
+                    print("Logo Clicked!");
+                  },
+                  child: Hero(
+                    tag: 'logoTag',
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 30, left: 50.0, right: 25.0),
+                      child: Image.asset(
+                        "assets/Asset1.png",
+                        height: 250.0,
+                        width: 250.0,
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(height: 20.0),
@@ -108,8 +120,21 @@ class FirstPage extends StatelessWidget {
             right: 20.0,
             child: FloatingActionButton(
               onPressed: () {
-                // Navigate to the next page
-                Navigator.pushNamed(context, '/generate_cv');
+                // Navigate to the next page with custom page transition
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) => CVGeneratorPage(),
+                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                      const begin = Offset(1.0, 0.0);
+                      const end = Offset.zero;
+                      const curve = Curves.easeInOutCubic;
+                      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                      var offsetAnimation = animation.drive(tween);
+                      return SlideTransition(position: offsetAnimation, child: child);
+                    },
+                  ),
+                );
               },
               child: Icon(Icons.arrow_forward),
               backgroundColor: Colors.blueAccent,

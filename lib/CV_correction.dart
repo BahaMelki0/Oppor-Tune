@@ -12,11 +12,19 @@ class CVCorrector extends StatefulWidget {
 class _CVCorrectorState extends State<CVCorrector> {
   late FilePickerResult cvFile;
   String correctedCV = ''; // Initialize here
+  bool isSubmitting = false;
 
   Future<void> uploadCV() async {
+    setState(() {
+      isSubmitting = true;
+    });
+
     cvFile = (await FilePicker.platform.pickFiles(allowMultiple: false))!;
 
     if (cvFile == null) {
+      setState(() {
+        isSubmitting = false;
+      });
       return;
     }
 
@@ -42,15 +50,21 @@ class _CVCorrectorState extends State<CVCorrector> {
       print(response.body);
     }
 
-    setState(() {});
+    setState(() {
+      isSubmitting = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CV Corrector App'),
+        title: Text(
+          'CV Corrector',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.blue, // Change the app bar color
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -60,17 +74,30 @@ class _CVCorrectorState extends State<CVCorrector> {
             children: <Widget>[
               Text(
                 'Upload your CV, and we will correct it for you.',
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold, // Add bold font weight
+                  color: Colors.blue, // Set text color
+                  letterSpacing: 1.2, // Add letter spacing
+                  fontStyle: FontStyle.italic, // Add italic style
+                ),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: uploadCV,
+                onPressed: isSubmitting ? null : uploadCV,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  child: Text(
-                    'Upload CV',
-                    style: TextStyle(fontSize: 18.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (isSubmitting) CircularProgressIndicator(color: Colors.white),
+                      if (isSubmitting) SizedBox(width: 10),
+                      Text(
+                        'Upload CV',
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ],
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
@@ -83,9 +110,20 @@ class _CVCorrectorState extends State<CVCorrector> {
               ),
               SizedBox(height: 20),
               if (correctedCV.isNotEmpty)
-                Text(
-                  correctedCV,
-                  style: TextStyle(fontSize: 16.0),
+                AnimatedOpacity(
+                  opacity: correctedCV.isNotEmpty ? 1.0 : 0.0,
+                  duration: Duration(milliseconds: 500),
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Text(
+                      correctedCV,
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                  ),
                 ),
             ],
           ),
