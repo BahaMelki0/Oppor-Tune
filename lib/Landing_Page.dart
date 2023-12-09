@@ -8,7 +8,7 @@ class FirstPage extends StatelessWidget {
         children: [
           // Background with Gradient Overlay
           Container(
-            color: Colors.white,
+            color: Colors.grey[200], // Light grey background color
             child: Stack(
               children: [
                 // Your other widgets
@@ -31,10 +31,13 @@ class FirstPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Logo
-                Image.asset(
-                  "lib/assets/Asset1.jpg",
-                  height: 100.0,
+                Container(
+                  margin: EdgeInsets.only(left: 50.0, right: 25.0),
+                  child: Image.asset(
+                    "assets/Asset1.png",
+                    height: 250.0,
+                    width: 250.0,
+                  ),
                 ),
                 SizedBox(height: 20.0),
                 // Text
