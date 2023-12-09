@@ -139,19 +139,49 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
 
               SizedBox(height: 20.0),
 
+
               // Generate CV button
               ElevatedButton(
                 onPressed: () {
                   // Validate the form and generate the CV if all fields are valid.
                   if (_formKey.currentState!.validate()) {
                     // Generate the CV here...
+
+                    // Navigate to the correct_cv page after generating the CV
+                    Navigator.pushNamed(context, '/correct_cv');
                   }
                 },
                 child: Text("Generate CV"),
               ),
+
+              // Dynamic List
+              _buildDynamicList(_technicalSkills, "Add Technical Skill", Icons.add, "Enter technical skill"),
+              _buildDynamicList(_languages, "Add Language", Icons.add, "Enter language"),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.indigo[700],
+        unselectedItemColor: Colors.black45,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.article),
+            label: 'Blog',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.build),
+            label: 'Tools',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }
@@ -186,6 +216,8 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
           trailing: IconButton(
             icon: Icon(buttonIcon),
             onPressed: () {
+              // Navigate to the correct_cv page before adding an item to the list
+              Navigator.pushNamed(context, '/correct_cv');
               setState(() {
                 items.add(""); // Add an empty string as a default value for the hint
               });
@@ -196,3 +228,7 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
     );
   }
 }
+
+
+
+
