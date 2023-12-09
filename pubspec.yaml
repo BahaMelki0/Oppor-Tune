@@ -14,8 +14,7 @@ dependencies:
   css_colors: ^1.1.3
 
 assets: 
-    - assets/405300036_1296381447744390_1482679707331758722_n.png
-
+    - assets/Asset1.jpg
 dev_dependencies:
   flutter_test:
     sdk: flutter

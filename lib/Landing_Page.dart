@@ -33,7 +33,7 @@ class FirstPage extends StatelessWidget {
               children: [
                 // Logo
                 Image.asset(
-                  "assets/405300036_1296381447744390_1482679707331758722_n.png",
+                  "lib/assets/Asset1.jpg",
                   height: 100.0,
                 ),
                 SizedBox(height: 20.0),
