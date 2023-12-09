@@ -13,6 +13,7 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
   String _address = "";
   String _email = "";
   String _aboutMe = "";
+  List<String> _degrees = [];
   List<String> _technicalSkills = [];
   List<String> _languages = [];
 
@@ -28,44 +29,53 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
           key: _formKey,
           child: ListView(
             children: [
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "First Name",
-                  hintText: "Enter your first name",
-                  icon: Icon(Icons.person),
-                ),
-                onChanged: (value) {
-                  setState(() {
-                    _firstName = value;
-                  });
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "First name is required.";
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 16.0),
+          // First and Last Name fields in a Row
+          Row(
+          children: [
+          Flexible(
+          child: TextFormField(
+          decoration: InputDecoration(
+          labelText: "First Name",
+            hintText: "Enter your first name",
+            icon: Icon(Icons.person),
+          ),
+          onChanged: (value) {
+            setState(() {
+              _firstName = value;
+            });
+          },
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "First name is required.";
+            }
+            return null;
+          },
+        ),
+      ),
+      SizedBox(width: 16.0), // Add some spacing between the fields
+      Flexible(
+        child: TextFormField(
+          decoration: InputDecoration(
+            labelText: "Last Name",
+            hintText: "Enter your last name",
+            icon: Icon(Icons.person),
+          ),
+          onChanged: (value) {
+            setState(() {
+              _lastName = value;
+            });
+          },
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "Last name is required.";
+            }
+            return null;
+          },
+        ),
+      ),
+      ],
+    ),
 
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Last Name",
-                  hintText: "Enter your last name",
-                  icon: Icon(Icons.person),
-                ),
-                onChanged: (value) {
-                  setState(() {
-                    _lastName = value;
-                  });
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "Last name is required.";
-                  }
-                  return null;
-                },
-              ),
               SizedBox(height: 16.0),
 
               TextFormField(
@@ -92,6 +102,8 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
                   setState(() {
                     _email = value;
                   });
+
+
                 },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -107,6 +119,13 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
               ),
               SizedBox(height: 16.0),
 
+              // Languages list
+              ListTile(
+                title: Text("University Degrees"),
+                leading: Icon(Icons.school),
+              ),
+              _buildDynamicList(_degrees, "Add a degree", Icons.add, "Enter the speciality and year"),
+              SizedBox(height: 16.0),
               // Information about yourself
               TextFormField(
                 decoration: InputDecoration(
@@ -137,7 +156,7 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
               ),
               _buildDynamicList(_languages, "Add Language", Icons.add, "Enter language"),
 
-              SizedBox(height: 20.0),
+              SizedBox(height: 16.0),
 
 
               // Generate CV button
@@ -153,10 +172,6 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
                 },
                 child: Text("Generate CV"),
               ),
-
-              // Dynamic List
-              _buildDynamicList(_technicalSkills, "Add Technical Skill", Icons.add, "Enter technical skill"),
-              _buildDynamicList(_languages, "Add Language", Icons.add, "Enter language"),
             ],
           ),
         ),
@@ -164,6 +179,7 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.indigo[700],
         unselectedItemColor: Colors.black45,
+        currentIndex: 2,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

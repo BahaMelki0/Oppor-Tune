@@ -41,7 +41,7 @@ class FirstPage extends StatelessWidget {
                 Text(
                   "Find Your",
                   style: TextStyle(
-                    color: Colors.pinkAccent,
+                    color: Colors.blueAccent,
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.2,
@@ -57,8 +57,24 @@ class FirstPage extends StatelessWidget {
                 Text(
                   "Dream Job",
                   style: TextStyle(
+                    color: Colors.pinkAccent,
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black,
+                        offset: Offset(1, 1),
+                        blurRadius: 2,
+                      ),
+                    ],
+                  ),
+                ),
+                Text(
+                  "Here !",
+                  style: TextStyle(
                     color: Colors.blueAccent,
-                    fontSize: 42.0,
+                    fontSize: 32.0,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.2,
                     shadows: [
