@@ -37,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Column(
                   children: <Widget>[
                     Image.asset(
-                      'assets/logo.png',
+                      'assets/Asset.png',
                       width: 100,
                       height: 100,
                     ),
