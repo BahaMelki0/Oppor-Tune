@@ -1,36 +1,34 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:frontandback/screens/signin_screen.dart';
 import 'package:flutter/material.dart';
-import 'Landing_Page.dart';  // Import your FirstPage widget
-import 'CV_generator.dart';  // Import your CVGeneratorPage widget
-import 'CV_correction.dart';  // Import your CVCorrector widget
+import 'package:flutter/foundation.dart' show kIsWeb;
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if(kIsWeb){
+    await Firebase.initializeApp(
+      options: FirebaseOptions(
+          apiKey: "AIzaSyCugW3-lZ86UZ5B6R1WQOyLyy4aSlCwd1I",
+          authDomain: "tests-36bc6.firebaseapp.com",
+          projectId: "tests-36bc6",
+          storageBucket: "tests-36bc6.appspot.com",
+          messagingSenderId: "48001818562",
+          appId: "1:48001818562:web:5256adbaf589e0001ec05b"
+      ),
+    );
+    runApp(const MyApp());
+  }
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Oppor\'Tune',
-      theme: ThemeData(
-        primarySwatch: Colors.blue, // Change the primary color
-        hintColor: Colors.blue, // Change the accent color
-        fontFamily: 'Roboto', // Use a custom font (make sure to include it in your pubspec.yaml)
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.blueGrey, // Change the app bar color
-          titleTextStyle: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1.2,
-          ),
-        ),
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => FirstPage(),
-        '/generate_cv': (context) => CVGeneratorPage(),
-        '/correct_cv': (context) => CVCorrector(),
-      },
+      title: 'Flutter Demo',
+      home: const SignInScreen(),
     );
   }
 }
