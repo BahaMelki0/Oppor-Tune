@@ -39,7 +39,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 child: Column(
                   children: <Widget>[
                     Image.asset(
-                      'assets/logo.png',
+                      'assets/Asset1.png',
                       width: 100,
                       height: 100,
                     ),
