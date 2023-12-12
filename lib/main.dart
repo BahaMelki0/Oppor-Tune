@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/landing', // Specify your initial route
       routes: {
         '/landing': (context) => FirstPage(),
-        '/cv_generator': (context) => CVGeneratorPage(),
+        '/cv_generator': (context) => CvGenerator(),
         '/search': (context) => SearchPage(),
       },
     );
