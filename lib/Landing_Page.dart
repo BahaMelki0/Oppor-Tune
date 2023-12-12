@@ -9,12 +9,7 @@ class FirstPage extends StatelessWidget {
         children: [
           // Background with Gradient Overlay
           Container(
-            color: Colors.grey[200], // Light grey background color
-            child: Stack(
-              children: [
-                // Your other widgets
-              ],
-            ),
+            color: Colors.white, // Light grey background color
           ),
           Container(
             decoration: BoxDecoration(
@@ -53,63 +48,50 @@ class FirstPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20.0),
                 // Text
-                Text(
-                  "Find Your",
-                  style: TextStyle(
-                    color: Colors.blueAccent,
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.2,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black,
-                        offset: Offset(1, 1),
-                        blurRadius: 2,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Find Your",
+                      style: TextStyle(
+                        color: Colors.yellow[200],
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.2,
+                        shadows: [Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 2)],
                       ),
-                    ],
-                  ),
-                ),
-                Text(
-                  "Dream Job",
-                  style: TextStyle(
-                    color: Colors.pinkAccent,
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.2,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black,
-                        offset: Offset(1, 1),
-                        blurRadius: 2,
+                    ),
+                    Text(
+                      "Dream Job",
+                      style: TextStyle(
+                        color: Colors.yellow[200],
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.2,
+                        shadows: [Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 2)],
                       ),
-                    ],
-                  ),
-                ),
-                Text(
-                  "Here !",
-                  style: TextStyle(
-                    color: Colors.blueAccent,
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.2,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black,
-                        offset: Offset(1, 1),
-                        blurRadius: 2,
+                    ),
+                    Text(
+                      "Here !",
+                      style: TextStyle(
+                        color: Colors.yellow[200],
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.2,
+                        shadows: [Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 2)],
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20.0),
-                Text(
-                  "Explore all the most exciting job roles\nbased on your interest and study major.",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
-                    letterSpacing: 1.2,
-                  ),
-                  textAlign: TextAlign.left,
+                    ),
+                    SizedBox(height: 20.0),
+                    Text(
+                      "Explore all the most exciting job roles\nbased on your interest and study major.",
+                      style: TextStyle(
+                        color: Colors.grey[300],
+                        fontSize: 18.0,
+                        letterSpacing: 1.2,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ],
                 ),
               ],
             ),

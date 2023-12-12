@@ -245,11 +245,11 @@ class _CVGeneratorPageState extends State<CVGeneratorPage> {
     });
 
     // Simulate processing time with a delay
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 1), () {
       // Process the form data here...
 
       // Navigate to the correct_cv page after generating the CV
-      Navigator.pushNamed(context, '/correct_cv');
+      Navigator.pushNamed(context, '/search');
     });
   }
 }
