@@ -4,7 +4,7 @@ import 'package:test/screens/addOffer.dart';
 
 class JobList extends StatelessWidget {
   const JobList({Key? key}) : super(key: key);
-  static const routeName = '/';
+  static const routeName = '/job list';
 
   @override
   //create the upper bar 

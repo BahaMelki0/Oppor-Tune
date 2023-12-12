@@ -4,7 +4,7 @@ import 'package:test/screens/jobList.dart';
 
 class AddOffer extends StatelessWidget {
   const AddOffer({Key? key}) : super(key: key);
-  static const routeName = '/new offer';
+  static const routeName = '/add offer';
 
   @override
   // add the company logo on top of the page
